@@ -1,0 +1,11 @@
+#raw-data,#piechart {
+    display: none;
+}
+
+.show-pie-chart,.show-line-chart,.show-raw {
+    cursor: pointer;
+}
+
+#error-div {
+    display: none;
+}

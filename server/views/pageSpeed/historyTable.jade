@@ -1,0 +1,10 @@
+if(Object.keys(filteredData).length)
+    table.table.table-bordered.table-striped.table-hover#results-table
+        each siteValue, siteIndex in filteredData
+            tr
+                td #{siteIndex}
+                    each currentSite, siteDate in siteValue
+                        td(id="#{currentSite[1]}" class="show-raw site-name metrics date" title="#{siteDate}") #{currentSite[0]['score']}
+                    td(class="show-line-chart") Show Chart
+else
+    h1 Can't get retrieve results

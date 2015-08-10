@@ -1,0 +1,22 @@
+extends ../shared/layout
+block main-content
+    form
+        input(type="text" id="start-date" name="startDate")
+        input(type="text" id="end-date" name="endDate")
+        select(id="site-strategy" name="siteStrategy")
+            option Both
+            option Desktop
+            option Mobile
+        input(type="button" id="filter" class="btn btn-lg" value="Filter")
+
+    select(id="site-urls")
+        each siteUrl in siteUrls
+            option #{siteUrl}
+    div#table-wrapper
+        include table
+    div(id="chart-wrapper")
+    pre(id="raw-data")
+block page-scripts
+    script(src="/js/googleCharts.js")
+    script(src="/js/tableEvents.js")
+    script(src="/js/httpRequester.js")

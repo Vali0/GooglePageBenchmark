@@ -1,0 +1,10 @@
+extends ../shared/layout
+block main-content
+    form(method="post" id='sites-form' class="form-horizontal")
+        each site, index in sites
+            div
+                label
+                    input(type="checkbox" class="check-box" value="#{site}" name="site_#{index}")
+                    span(name="site_#{index}") #{site}
+        input(type="submit" value="Benchmark" class="btn btn-lg")
+block page-scripts

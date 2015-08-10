@@ -1,0 +1,21 @@
+extends ../shared/layout
+block main-content
+    .container
+        div(id="error-div" class="alert alert-danger")
+                span Wrong URLs
+        form(id='profile-form')
+            label Username:
+            label(id="username") #{currentUser.username}
+            br
+            input(type="button" class="btn btn-lg" value="+" id="add-site")
+            div(class="site form-group has-error")
+                label(class="control-label") Site:
+                input(type="text" name="site_0" required="required" class="site-name form-control" autocomplete="off")
+            label Confirm password:
+            input(type="password" id="password" class="form-control")
+            input(type="button" id="update-profile" class="btn btn-lg" value="Update")
+block page-scripts
+    script(src="/js/addMoreSites.js")
+    script(src="/js/updateUserInfoController.js")
+    script(src="/js/httpRequester.js")
+    script(src="/js/clientValidation.js")

@@ -1,0 +1,40 @@
+extends ../shared/layout
+block main-content
+    div#table-wrapper
+        if(benchmarkData.length)
+            table.table.table-bordered.table-striped.table-hover#results-table
+                tr
+                    th Site
+                    th Speed
+                    th Resources
+                    th Static Resources
+                    th Hosts
+                    th Request Bytes
+                    th JavaScript Resources
+                    th JavaScript Size
+                    th CSS Resources
+                    th CSS Size
+                    th HTML Size
+                    th Image Size
+                    th Chart
+                each site in benchmarkData
+                    tr
+                        td #{site.title}
+                        td #{site.ruleGroups.SPEED.score}
+                        td #{site.pageStats.numberResources}
+                        td #{site.pageStats.numberStaticResources}
+                        td #{site.pageStats.numberHosts}
+                        td(class="metrics") #{site.pageStats.totalRequestBytes}
+                        td #{site.pageStats.numberJsResources}
+                        td(class="metrics") #{site.pageStats.javascriptResponseBytes}
+                        td #{site.pageStats.numberCssResources}
+                        td(class="metrics") #{site.pageStats.cssResponseBytes}
+                        td(class="metrics") #{site.pageStats.htmlResponseBytes}
+                        td(class="metrics") #{site.pageStats.imageResponseBytes}
+                        td(class="show-pie-chart") Show Chart
+        else
+            h1 Can't get retrieve results
+    div(id="chart-wrapper")
+block page-scripts
+    script(src="/js/googleCharts.js")
+    script(src="/js/tableEvents.js")

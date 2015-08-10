@@ -1,0 +1,17 @@
+extends ../shared/layout
+block main-content
+    .panel.panel-default
+        .panel-body
+            div(id="error-div" class="alert alert-danger")
+                span Wrong URLs
+            form(method="post" id='sites-form')
+                input(type="button" class="btn btn-lg" value="+" id="add-site")
+                div(class="site form-group has-error")
+                    label(class="control-label") Site:
+                    input(type="text" name="site_0" required="required" autocomplete="off" class="site-name form-control")
+                input(id="benchmark-sites" type="submit" value="Benchmark" class="btn btn-lg")
+                a(href="/page-speed/my-sites")
+                    input(type="button" class="btn btn-lg" value="Run my sites" id="add-site")
+block page-scripts
+    script(src="/js/addMoreSites.js")
+    script(src="/js/clientValidation.js")

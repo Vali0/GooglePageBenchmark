@@ -1,0 +1,16 @@
+extends ../shared/layout
+block main-content
+    .panel.panel-default
+        .panel-body
+            input(type="button" id="upload-more" class="btn btn-lg" value="Add file")
+            hr
+        .panel-body(id='files-for-upload')
+            form(method="post" enctype="multipart/form-data" id="form-upload")
+                input(type="file" name="file_0" class="btn btn-sm")
+                input(type="checkbox" name="private_0")
+                span Private
+                br
+                br
+                input(type="submit" value="Upload files" class="btn btn-lg")
+block page-scripts
+    script(src="js/uploadMoreFiles.js")

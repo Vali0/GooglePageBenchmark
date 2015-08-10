@@ -1,0 +1,13 @@
+extends ../shared/layout
+block main-content
+    table.table.table-bordered
+        tr
+            th File name
+            th URL
+            th Private
+        each file in files
+            tr
+                td #{file.fileName}
+                td
+                    a(href="/download/#{file.url}") http://mysite.com/files/download/#{file.url}
+                td #{file.isPrivate ? 'Yes' : 'No'}

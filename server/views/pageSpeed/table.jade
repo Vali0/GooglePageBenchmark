@@ -1,0 +1,39 @@
+if(Object.keys(filteredData).length)
+    include historyTable
+if(benchmarkData.length)
+    table.table.table-bordered.table-striped.table-hover#results-table
+        tr
+            th Date
+            th Site
+            th Speed
+            th Resources
+            th Static Resources
+            th Hosts
+            th Request Bytes
+            th JavaScript Resources
+            th JavaScript Size
+            th CSS Resources
+            th CSS Size
+            th HTML Size
+            th Image Size
+            th Chart
+            th RAW
+        each site in benchmarkData
+            tr
+                td #{site['date']}
+                td(class="site-name" id="#{site['_id']}") #{site['benchmarkData'].title}
+                td #{site['benchmarkData'].ruleGroups.SPEED.score}
+                td #{site['benchmarkData'].pageStats.numberResources}
+                td #{site['benchmarkData'].pageStats.numberStaticResources}
+                td #{site['benchmarkData'].pageStats.numberHosts}
+                td(class="metrics") #{site['benchmarkData'].pageStats.totalRequestBytes}
+                td #{site['benchmarkData'].pageStats.numberJsResources}
+                td(class="metrics") #{site['benchmarkData'].pageStats.javascriptResponseBytes}
+                td #{site['benchmarkData'].pageStats.numberCssResources}
+                td(class="metrics") #{site['benchmarkData'].pageStats.cssResponseBytes}
+                td(class="metrics") #{site['benchmarkData'].pageStats.htmlResponseBytes}
+                td(class="metrics") #{site['benchmarkData'].pageStats.imageResponseBytes}
+                td(class="show-pie-chart") Show Chart
+                td(class="show-raw") RAW
+else
+    h1 Can't get retrieve results
